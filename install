@@ -1,0 +1,23 @@
+#!/bin/bash
+
+ignore_files=( ".git" ".gitignore" ".gitmodules" )
+current_dir=$( cd "$( dirname "$0" )" && pwd )
+
+containsElement () {
+	local e
+	for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+	return 1
+}
+
+for dotfile in $(ls -d .*); do
+	if [ "$dotfile" == "." ] || [ "$dotfile" == ".." ]
+	then
+		echo "Ignoring . and .."
+	elif containsElement "$dotfile" "${ignore_files[@]}"
+	then
+		echo "Ignoring file $dotfile in \$ignore_files"
+	else
+		echo "Linking $dotfile"
+		ln -is $current_dir/$dotfile ~
+	fi
+done
