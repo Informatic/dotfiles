@@ -88,6 +88,7 @@ call pathogen#infect()
 " cd ~/.vim/bundle
 " git clone git://github.com/Lokaltog/vim-powerline.git
 set laststatus=2
+let g:Powerline_symbols = 'fancy'
 
 " Settings for ctrlp
 " cd ~/.vim/bundle
