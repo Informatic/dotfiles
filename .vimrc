@@ -9,6 +9,9 @@ autocmd! bufwritepost .vimrc source %
 " Clipboard support
 set clipboard=unnamed
 
+" F2 will toggle the "paste mode" (disabled indentation)
+set pastetoggle=<F2>
+
 " Mouse support
 set mouse=a
 
@@ -106,8 +109,8 @@ let ropevim_enable_shortcuts = 1
 let g:pymode_rope_goto_def_newwin = "vnew"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
 let g:pymode_indent = 0
+let g:pymode_lint_ignore = "W191"  " Allow tab indenatation
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
