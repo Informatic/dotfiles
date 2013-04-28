@@ -110,7 +110,7 @@ export PATH=/home/informatic/Projects/stellaris/sourcery_toolchain/bin:$PATH
 declare -A hostname_colors
 
 # Move away to some sort of configuration file
-hostname_colors=(["snsd"]=200 ["maroon"]=150)
+hostname_colors=(["snsd"]=200 ["nas"]=220 ["maroon.sored.pl"]=124 ["web1.humanitee.pl"]=118 )
 default_host_color="240"
 prompt_host_color=${hostname_colors[`hostname`]}
 [[ -z "$prompt_host_color" ]] && prompt_host_color=$default_host_color
