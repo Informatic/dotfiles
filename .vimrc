@@ -26,8 +26,8 @@ map <Leader>m <esc>:tabnext<CR>
 
 " some of the shortcuts i'm used to
 map <C-t> <esc>:tabnew<CR>
-map <C-n> <esc>:tabnew<CR>
-map <C-w> <esc>:q<CR>
+" map <C-n> <esc>:tabnew<CR>
+" map <C-w> <esc>:q<CR>
 
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
@@ -110,7 +110,8 @@ let g:pymode_rope_goto_def_newwin = "vnew"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
 let g:pymode_indent = 0
-let g:pymode_lint_ignore = "W191"  " Allow tab indenatation
+let g:pymode_lint = 0
+let g:pymode_lint_ignore = "W191,E128,E121"  " Allow tab indenatation
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
@@ -122,8 +123,14 @@ set nofoldenable
 
 
 " Coding style
+" set smartindent
+" set expandtab
 set tabstop=4
 " setlocal softtabstop=4
 set shiftwidth=4
 " setlocal shiftround
 " setlocal autoindent
+
+map <F5> <ESC>:w<CR>:! make<CR>
+
+set cursorline
