@@ -1,7 +1,8 @@
 inf dotfiles
 ============
 
-My cute little dotfiles repository. Feel free to reuse any part you like.
+My cute little dotfiles repository. Feel free to reuse any part you like. For
+best experience use [powerline-enabled font](https://github.com/Lokaltog/vim-powerline/blob/develop/fontpatcher/README.rst).
 
 Usage
 -----
