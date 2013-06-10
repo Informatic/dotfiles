@@ -5,6 +5,6 @@ git pull
 
 for host in "$@"
 do
-    echo -n " * Updating $HOST: "
+    echo -n " * Updating $host: "
     ssh $host update-dotfiles
 done
