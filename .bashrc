@@ -1,10 +1,14 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
 # Absolute directory of cloned dotfiles repository
 DOTFILES_DIR="`dirname $(readlink $BASH_SOURCE)`"
+
+export PATH="$DOTFILES_DIR/tools:$PATH"
+export PATH="$HOME/Projects/stellaris/sourcery_toolchain/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -52,6 +56,3 @@ source $DOTFILES_DIR/scripts/venv
 [ -f ~/.bash_aliases ]       && source ~/.bash_aliases
 [ -f ~/.bash_aliases.local ] && source ~/.bash_aliases.local
 
-export PATH="$DOTFILES_DIR/tools:$PATH"
-export PATH="$HOME/Projects/stellaris/sourcery_toolchain/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
