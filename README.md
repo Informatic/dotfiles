@@ -17,3 +17,15 @@ Cool features
 `~/.bash_aliases.local` is meant to be machine-specific file stored in
 different branches. I use these to keep `g` -> `gedit` alias on my working
 laptop for instance. (despite moving back to vim)
+
+Requirements
+------------
+
+	# everyday work:
+	sudo apt-get install git gitk git-cola vim-nox python-pip openssh-client mosh urxvt tmux
+
+	# eyecandy:
+	sudo apt-get install ttf-mscorefonts-installer xfonts-terminus xfonts-terminus-oblique
+
+	# tools requirements:
+	sudo apt-get install scrot imagemagick
