@@ -104,8 +104,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH="$PATH:/opt/pspsdk/bin:$HOME/.local/bin"
-export PATH=/home/informatic/Projects/stellaris/sourcery_toolchain/bin:$PATH
+export PATH="$HOME/Projects/stellaris/sourcery_toolchain/bin:$HOME/.local/bin:$PATH"
 
 declare -A hostname_colors
 
