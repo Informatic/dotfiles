@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+#% Copy file to publicly available path
 
 import sys, os, subprocess, hashlib, urllib
 
