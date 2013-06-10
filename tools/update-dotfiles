@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd `dirname $0`/..
+git pull
+
+for host in "$@"
+do
+    echo -n " * Updating $HOST: "
+    ssh $host update-dotfiles
+done
