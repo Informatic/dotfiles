@@ -1,0 +1,16 @@
+#!/bin/bash
+#% Takes screenshot of desired screen area and uses "drop" tool to publish
+
+# yes, i know it breaks dc calc
+outfile=$(mktemp /tmp/dc-XXXXXX.png)
+[ -x `which gnome-screenshot` ] && gnome-screenshot -a -f $outfile 2> /dev/null ||
+[ -x `which scrot` ] && scrot -s $outfile ||
+echo "No screenshot tool available, install scrot or gnome-screenshot" >&2
+
+if [[ -s $outfile ]]; then
+	chmod 644 $outfile
+	drop $outfile
+else
+	echo "Nothing to drop"
+fi
+rm $outfile

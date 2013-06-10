@@ -1,0 +1,13 @@
+#! /bin/bash
+#% Merge multiple images vertically and downsize to reasonable resolution.
+#% Useful for publishing multiple movie screenshots.
+
+if [[ $# -eq 0 ]]; then
+	echo "usage: $0 [file1] [file2] ..."
+	exit 1
+fi
+outfile=$(mktemp /tmp/ds-out-XXXXXX.png)
+montage -geometry +0+0 -tile 1x $* - | convert -resize 640x\> - $outfile
+chmod 644 $outfile
+drop $outfile
+rm $outfile

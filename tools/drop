@@ -1,0 +1,48 @@
+#! /usr/bin/env python
+
+import sys, os, subprocess, hashlib, urllib
+
+destination = 'dropbox.inf.re:~/www/dropbox.inf.re/htdocs/b/%s'
+webpath     = 'http://d.inf.re/b/%s'
+FIX_PERMISSIONS = True
+
+def usage():
+	sys.stderr.write('usage: %s [file1] [file2] ...\n' % sys.argv[0])
+
+def hashfile(afile, hasher, blocksize=65536):
+	buf = afile.read(blocksize)
+	while len(buf) > 0:
+		hasher.update(buf)
+		buf = afile.read(blocksize)
+	return hasher.hexdigest()
+
+def upload_file(filename):
+	path = os.path.realpath(filename)
+
+	destfilename = hashfile(open(path, 'r'), hashlib.md5()) + (os.path.splitext(path)[1] if os.path.splitext(path)[1] != '' else '.txt')
+	subprocess.call(['scp', path, destination % destfilename], stdout=sys.stderr)
+	if FIX_PERMISSIONS and not (os.stat(path).st_mode & 4):
+		sys.stderr.write('[%s] Fixing permissions... ' % filename)
+		subprocess.call(['ssh', (destination % destfilename).partition(':')[0], "chmod o+r %s" % (destination % destfilename).partition(':')[2]])
+		sys.stderr.write('\n')
+	return (os.path.basename(path), webpath % urllib.quote(destfilename))
+
+def main():
+	if len(sys.argv[1:]) == 0:
+		usage()
+		return 1
+
+	links = []
+
+	for filename in sys.argv[1:]:
+		try:
+			links.append(upload_file(filename))
+		except:
+			sys.stderr.write('[%s] An error occured: %s\n' % (filename, sys.exc_info()[1]))
+
+	if links:
+		print '\n'.join(['%s -> %s' % l for l in links])
+	return 0
+
+if __name__ == '__main__':
+	exit(main())

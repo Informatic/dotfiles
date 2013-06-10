@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ignore_files=( ".git" ".gitignore" ".gitmodules" "install" "README.md" )
+ignore_files=( ".git" ".gitignore" ".gitmodules" "install" "README.md" "tools" )
 current_dir=$( cd "$( dirname "$0" )" && pwd )
 
 containsElement () {
