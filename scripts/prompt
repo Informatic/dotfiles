@@ -8,7 +8,7 @@ default_host_color="240"
 prompt_host_color=${hostname_colors[`hostname`]}
 [[ -z "$prompt_host_color" ]] && prompt_host_color=$default_host_color
 
-PS1="\[\e[38;5;${prompt_host_color}m\]\h\[\e[38;5;241m\]\\\\\[\e[0m\]\u \[\e[38;5;246m\]\w \[\e[38;5;240m\e[48;5;233m\]↪ …\[\e[0m\] "
+PS1="\[\e[38;5;${prompt_host_color}m\]\h\[\e[38;5;241m\]\\\\\[\e[0m\]\u \[\e[38;5;246m\]\W \[\e[38;5;240m\e[48;5;233m\]↪ …\[\e[0m\] "
 PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 
 [[ ! -z "$MINIMAL_PROMPT" ]] && PS1="\[\e[38;5;246m\]\W \[\e[38;5;240m\e[48;5;233m\]\$\[\e[0m\] "
