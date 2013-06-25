@@ -22,7 +22,7 @@ Requirements
 ------------
 
 	# everyday work:
-	sudo apt-get install git gitk git-cola vim-nox python-pip openssh-client mosh urxvt tmux
+	sudo apt-get install git gitk git-cola vim-nox python-pip openssh-client mosh urxvt tmux python-virtualenv
 
 	# eyecandy:
 	sudo apt-get install ttf-mscorefonts-installer xfonts-terminus xfonts-terminus-oblique
