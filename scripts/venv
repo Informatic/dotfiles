@@ -13,7 +13,7 @@ venv() {
         if [ $? == 0 ]; then
             deactivate
         else
-            echo "usage: ..."
+            venv "$(basename `pwd`)"
         fi
     else
         local venv_name=$1
