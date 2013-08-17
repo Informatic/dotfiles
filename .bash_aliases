@@ -1,5 +1,6 @@
 # Shortcuts
 alias o='xdg-open $@ > /dev/null 2> /dev/null'
+alias m="mplayer"
 alias py="ipython"
 alias gl="git log"
 
