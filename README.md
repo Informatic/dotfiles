@@ -14,9 +14,9 @@ Usage
 Cool features
 -------------
 
-`~/.bash_aliases.local` is meant to be machine-specific file stored in
-different branches. I use these to keep `g` -> `gedit` alias on my working
-laptop for instance. (despite moving back to vim)
+`~/.bash_aliases.local` and `~/.bashrc.local` are meant to be machine-specific
+scripts stored in different branches. I use these to keep `g` -> `gedit` alias 
+on my working laptop for instance. (despite moving back to vim)
 
 Requirements
 ------------

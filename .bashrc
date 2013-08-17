@@ -4,7 +4,6 @@
 DOTFILES_DIR="`dirname $(readlink $BASH_SOURCE)`"
 
 export PATH="$DOTFILES_DIR/tools:$PATH"
-export PATH="$HOME/Projects/stellaris/sourcery_toolchain/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # If not running interactively, don't do anything
@@ -46,6 +45,9 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Load local bashrc file
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local
 
 # Load relevant parts
 source $DOTFILES_DIR/scripts/prompt
