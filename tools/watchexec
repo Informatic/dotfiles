@@ -1,0 +1,62 @@
+#!/usr/bin/python
+#% Restarts process on path changes
+
+import pyinotify
+import sys
+import subprocess
+import time
+import os
+
+wm = pyinotify.WatchManager()
+
+class EventHandler(pyinotify.ProcessEvent):
+    def __init__(self, cmd_args):
+        self.cmd_args = cmd_args
+        self.proc = None
+        self.respawn()
+
+    def respawn(self):
+        sys.stdout.write("Respawning process . .")
+        if self.proc != None and self.proc.poll() == None:
+            self.proc.terminate()
+            for n in range(10):
+                if self.proc.poll() != None: break
+                time.sleep(0.2)
+                sys.stdout.write(" .")
+
+            if self.proc.poll() != None:
+                try:
+                    self.proc.kill()
+                except OSError:
+                    # Race condition above ... :)
+                    pass
+
+        sys.stdout.write('\n')
+
+        self.proc = subprocess.Popen(self.cmd_args)
+
+    def process_default(self, event):
+        self.respawn()
+
+try:
+    no_sep = False
+    sys.argv.index('--')
+except ValueError:
+    no_sep = True
+
+if len(sys.argv) < 4 or no_sep:
+    print >>sys.stderr, "usage: %s path1 [path2] [path3] -- executable arguments" % sys.argv[0]
+    exit(1)
+
+paths = sys.argv[1:sys.argv.index('--')]
+cmd_args = sys.argv[sys.argv.index('--')+1:]
+
+for p in paths:
+    if not os.path.exists(p):
+        print "%s: path not found" % p
+        exit(1)
+    wdd = wm.add_watch(p, pyinotify.IN_MODIFY, rec=True)
+
+notifier = pyinotify.Notifier(wm, EventHandler(cmd_args))
+
+notifier.loop()

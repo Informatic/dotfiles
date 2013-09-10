@@ -28,4 +28,4 @@ Requirements
 	sudo apt-get install ttf-mscorefonts-installer xfonts-terminus xfonts-terminus-oblique
 
 	# tools requirements:
-	sudo apt-get install scrot imagemagick
+	sudo apt-get install scrot imagemagick python-pyinotify
