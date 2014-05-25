@@ -58,3 +58,4 @@ source $DOTFILES_DIR/scripts/venv
 [ -f ~/.bash_aliases ]       && source ~/.bash_aliases
 [ -f ~/.bash_aliases.local ] && source ~/.bash_aliases.local
 
+[ -z "$EDITOR" ] && EDITOR=vim
