@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec gist-paste -c -s -p $*
