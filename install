@@ -21,3 +21,9 @@ for dotfile in $(ls -d .*); do
 		ln -is $current_dir/$dotfile ~
 	fi
 done
+
+echo
+echo "==="
+echo "Finished!"
+echo "You may now want to update vim distribution with:"
+echo " $ vim +PluginInstall +qall
