@@ -7,7 +7,7 @@ if [[ $# -eq 0 ]]; then
 	exit 1
 fi
 outfile=$(mktemp /tmp/ds-out-XXXXXX.png)
-montage -geometry +0+0 -tile 1x $* - | convert -resize 640x\> - $outfile
+montage -geometry +0+0 -auto-orient -tile 1x $* - | convert -resize 640x\> - $outfile
 chmod 644 $outfile
 drop $outfile
 rm $outfile
