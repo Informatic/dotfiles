@@ -12,12 +12,17 @@ set laststatus=2
 let g:Powerline_symbols = 'fancy'
 
 Plugin 'scrooloose/nerdtree'
-let NERDTreeIgnore=['\.py[co]$']
+let NERDTreeIgnore=['\.py[co]$', '\.o$', '\.obj$', '\.elf$', '\.hex$']
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
-set wildignore+=*_build/*
+set wildignore+=*.pyo
+set wildignore+=*.o
+set wildignore+=*.elf
+set wildignore+=*.hex
+set wildignore+=*/_build/*
+set wildignore+=*/node_modules/*
 
 Plugin 'tacahiroy/ctrlp-funky'
 
