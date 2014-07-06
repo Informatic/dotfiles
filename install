@@ -26,4 +26,4 @@ echo
 echo "==="
 echo "Finished!"
 echo "You may now want to update vim distribution with:"
-echo " $ vim +PluginInstall +qall
+echo " $ vim +PluginInstall +qall"
