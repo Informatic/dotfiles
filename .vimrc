@@ -25,7 +25,6 @@ set wildignore+=*/_build/*
 set wildignore+=*/node_modules/*
 
 Plugin 'tacahiroy/ctrlp-funky'
-
 Plugin 'vim-scripts/wombat256.vim'
 
 Plugin 'SirVer/ultisnips'
@@ -35,15 +34,25 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
-call vundle#end()
+Plugin 'jplaut/vim-arduino-ino'
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'ciaranm/detectindent'
+Plugin 'nvie/vim-flake8'
+Plugin 'tpope/vim-unimpaired'
 
+call vundle#end()
 
 """ Coding style
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+let g:detectindent_preferred_indent = 4
+
 set smarttab
 set expandtab
+let g:detectindent_preferred_expandtab = 1
+
 filetype plugin indent on
 
 
@@ -73,6 +82,7 @@ set smartcase
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") 
     \ | exe "normal! g'\"" | endif
 
+au BufReadPost * :DetectIndent
 
 """ Appearance
 syntax on
