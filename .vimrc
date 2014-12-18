@@ -104,6 +104,9 @@ highlight ColorColumn ctermbg=233
 " Highlight cursor line
 set cursorline
 
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 
 """ Addons
 " ====================
