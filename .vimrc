@@ -7,9 +7,29 @@ call vundle#begin()
 """ Vundle plugins
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
 set laststatus=2
-let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'murmur'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
+  \ 'c'  : 'C',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V',
+  \ '' : 'V',
+  \ 's'  : 'S',
+  \ 'S'  : 'S',
+  \ '' : 'S',
+  \ }
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'mhinz/vim-signify'
 
 Plugin 'scrooloose/nerdtree'
 let NERDTreeIgnore=['\.py[co]$', '\.o$', '\.obj$', '\.elf$', '\.hex$']
