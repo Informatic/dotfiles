@@ -104,6 +104,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 
 au BufReadPost * :DetectIndent
 
+set viminfo='100,<500,s10,h
+
 """ Appearance
 syntax on
 
