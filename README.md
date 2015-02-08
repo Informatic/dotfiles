@@ -7,7 +7,7 @@ best experience use [powerline-enabled font](https://github.com/Lokaltog/vim-pow
 Usage
 -----
 
-	git clone --recursive this-repository ~/.dotfiles
+	git clone --recursive https://github.com/Informatic/dotfiles.git ~/.dotfiles
 	cd ~/.dotfiles
 	./install
 
