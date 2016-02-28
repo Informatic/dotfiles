@@ -1,13 +1,11 @@
-""" Vundle
+""" Plug
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-""" Vundle plugins
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/bundle')
 
-Plugin 'bling/vim-airline'
+""" Plug plugins
+Plug 'bling/vim-airline'
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'murmur'
@@ -27,14 +25,13 @@ let g:airline_mode_map = {
   \ '' : 'S',
   \ }
 
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 
-Plugin 'mhinz/vim-signify'
-
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 let NERDTreeIgnore=['\.py[co]$', '\.o$', '\.obj$', '\.elf$', '\.hex$']
 
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*.pyo
@@ -44,18 +41,16 @@ set wildignore+=*.hex
 set wildignore+=*/_build/*
 set wildignore+=*/node_modules/*
 
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'vim-scripts/wombat256.vim'
+Plug 'vim-scripts/wombat256.vim'
 
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-j>"
 let g:UltiSnipsEditSplit="vertical"
 
-Plugin 'ciaranm/detectindent'
-Plugin 'scrooloose/syntastic'
+Plug 'ciaranm/detectindent'
+Plug 'scrooloose/syntastic'
 
 nmap <F7> :SyntasticCheck<CR>
 
@@ -68,11 +63,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-Plugin 'tpope/vim-unimpaired'
-Plugin 'gregsexton/MatchTag'
-Plugin 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-unimpaired'
+Plug 'gregsexton/MatchTag'
+Plug 'Valloric/YouCompleteMe'
 
-call vundle#end()
+call plug#end()
 
 """ Coding style
 set tabstop=4
