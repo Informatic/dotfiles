@@ -49,17 +49,28 @@ Plugin 'vim-scripts/wombat256.vim'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-j>"
 let g:UltiSnipsEditSplit="vertical"
 
-Plugin 'jplaut/vim-arduino-ino'
-Plugin 'sudar/vim-arduino-syntax'
-Plugin 'chase/vim-ansible-yaml'
 Plugin 'ciaranm/detectindent'
-Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/syntastic'
+
+nmap <F7> :SyntasticCheck<CR>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 Plugin 'tpope/vim-unimpaired'
+Plugin 'gregsexton/MatchTag'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -105,6 +116,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 au BufReadPost * :DetectIndent
 
 set viminfo='100,<500,s10,h
+
+let g:python_host_prog='/usr/bin/python'
 
 """ Appearance
 syntax on

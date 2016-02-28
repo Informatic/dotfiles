@@ -2,7 +2,9 @@
 alias o='xdg-open $@ > /dev/null 2> /dev/null'
 alias m="mplayer"
 alias py="ipython"
-alias gl="git log --oneline --decorate"
+alias gl="git log --format='%C(auto)%h%C(auto) %s%d' --color"
+alias gs="git status -s"
+alias gd="git diff"
 
 # Typos, rather convenient
 alias xit="exit"
