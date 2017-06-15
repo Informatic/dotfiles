@@ -5,7 +5,7 @@ filetype off
 call plug#begin('~/.vim/bundle')
 
 """ Plug plugins
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'murmur'
@@ -49,23 +49,56 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-j>"
 let g:UltiSnipsEditSplit="vertical"
 
-Plug 'ciaranm/detectindent'
-Plug 'scrooloose/syntastic'
+" Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 
-nmap <F7> :SyntasticCheck<CR>
+let g:ale_sign_column_always = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}
+let g:ale_open_list = 1
+let g:ale_lint_delay = 1000
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+au FileType qf call AdjustWindowHeight(3, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
+
+let g:gitgutter_sign_column_always = 1
+
+
+" Plug 'ciaranm/detectindent'
+" Plug 'scrooloose/syntastic'
+
+" nmap <F7> :SyntasticCheck<CR>
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 Plug 'tpope/vim-unimpaired'
 Plug 'gregsexton/MatchTag'
 Plug 'Valloric/YouCompleteMe'
+Plug 'elixir-lang/vim-elixir'
+Plug 'mitsuhiko/vim-jinja'
+Plug 'pearofducks/ansible-vim'
+
+Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:ConqueGdb_GdbExe = '/usr/local/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gdb'
+"Plug 'vim-scripts/Conque-GDB'
 
 call plug#end()
 
@@ -73,11 +106,11 @@ call plug#end()
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-let g:detectindent_preferred_indent = 4
+" let g:detectindent_preferred_indent = 4
 
 set smarttab
 set expandtab
-let g:detectindent_preferred_expandtab = 1
+" let g:detectindent_preferred_expandtab = 1
 
 filetype plugin indent on
 
@@ -107,8 +140,9 @@ set smartcase
 " Jump to last position in file on load
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") 
     \ | exe "normal! g'\"" | endif
+au BufWritePost * execute 'pclose'
 
-au BufReadPost * :DetectIndent
+" au BufReadPost * :DetectIndent
 
 set viminfo='100,<500,s10,h
 
@@ -153,3 +187,4 @@ if ! exists("*RunWith")
     autocmd FileType ruby   nmap ,t :call RunWith("ruby")<CR>
 endif
 
+set clipboard=unnamedplus
