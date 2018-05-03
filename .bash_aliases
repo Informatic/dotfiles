@@ -38,3 +38,9 @@ function mosh-mouse {
     mosh $*
     mousemode_off
 }
+
+function s {
+    PORT=$1; shift
+    BAUD=${1:-9600}; shift
+    picocom -b $BAUD $PORT $*
+}
