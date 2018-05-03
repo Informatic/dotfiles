@@ -14,6 +14,10 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 require("awful.hotkeys_popup.keys")
 
 local cyclefocus = require("cyclefocus")
+cyclefocus.raise_clients = false
+cyclefocus.naughty_preset.position = 'bottom_right'
+cyclefocus.cycle_filters = {}
+
 local battery_widget = require("battery-widget")
 
 -- {{{ Error handling

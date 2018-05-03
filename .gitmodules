@@ -1,0 +1,6 @@
+[submodule ".config/awesome/battery-widget"]
+	path = .config/awesome/battery-widget
+	url = https://github.com/deficient/battery-widget
+[submodule ".config/awesome/cyclefocus"]
+	path = .config/awesome/cyclefocus
+	url = https://github.com/blueyed/awesome-cyclefocus
