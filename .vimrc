@@ -4,6 +4,9 @@ filetype off
 
 call plug#begin('~/.vim/bundle')
 
+""" Fix Konsole font changes...
+set guicursor=
+
 """ Plug plugins
 Plug 'vim-airline/vim-airline'
 set laststatus=2
@@ -108,7 +111,6 @@ set softtabstop=4
 set shiftwidth=4
 " let g:detectindent_preferred_indent = 4
 
-set smarttab
 set expandtab
 " let g:detectindent_preferred_expandtab = 1
 
