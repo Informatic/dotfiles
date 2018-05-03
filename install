@@ -1,25 +1,43 @@
 #!/bin/bash
 
 ignore_files=( ".git" ".gitignore" ".gitmodules" "install" "README.md" "tools" "scripts" )
+extract_subdirs=( ".config" )
+
 current_dir=$( cd "$( dirname "$0" )" && pwd )
 
 containsElement () {
-	local e
-	for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
-	return 1
+    local e
+    for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+    return 1
 }
 
-for dotfile in $(ls -d .*); do
-	if [ "$dotfile" == "." ] || [ "$dotfile" == ".." ]
-	then
-		echo "Ignoring . and .."
-	elif containsElement "$dotfile" "${ignore_files[@]}"
-	then
-		echo "Ignoring file $dotfile in \$ignore_files"
-	else
-		echo "Linking $dotfile"
-		ln -is $current_dir/$dotfile ~
-	fi
+for dotfile in .*; do
+    if [ "$dotfile" == "." ] || [ "$dotfile" == ".." ]
+    then
+        echo "Ignoring . and .."
+    elif containsElement "$dotfile" "${ignore_files[@]}" || containsElement "$dotfile" "${extract_subdirs[@]}"
+    then
+        echo "Ignoring file $dotfile in \$ignore_files"
+    else
+        echo "Linking $dotfile"
+        ln -is $current_dir/$dotfile ~
+    fi
+done
+
+for subdir in ${extract_subdirs[@]}; do
+    if [[ -d ~/$subdir ]]; then
+        echo "Handling $subdir:"
+        for dotfile in $subdir/*; do
+            if [ "$dotfile" == "." ] || [ "$dotfile" == ".." ]; then
+                echo "Ignoring"
+            else
+                ln -is $current_dir/$dotfile ~/.config
+                echo "$dotfile"
+            fi
+        done
+    else
+        echo "No $subdir directory, ignoring."
+    fi
 done
 
 echo
