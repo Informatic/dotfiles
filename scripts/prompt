@@ -3,9 +3,9 @@
 declare -A hostname_colors
 
 function __taskwarrior_prompt {
-    tracking="$(timew get dom.active)"
-    if [ $tracking -gt "0" ]; then
-        tasktime="$(timew get dom.active.duration | egrep  -o '[0-9]+[A-Z]'| head -1 |tr 'A-Z' 'a-z')"
+    local tracking="$(timew get dom.active)"
+    if [[ "$tracking" -eq 1 ]]; then
+        local tasktime="$(timew get dom.active.duration | egrep -o '[0-9]+[A-Z]' | head -n 1 | tr 'A-Z' 'a-z')"
         echo -e "\e[36m ($tasktime)"
     fi
 }
