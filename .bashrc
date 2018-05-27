@@ -53,6 +53,7 @@ fi
 source $DOTFILES_DIR/scripts/prompt
 source $DOTFILES_DIR/scripts/scratch
 source $DOTFILES_DIR/scripts/venv
+source $DOTFILES_DIR/scripts/taskwarrior
 
 # Load aliases files
 [ -f ~/.bash_aliases ]       && source ~/.bash_aliases

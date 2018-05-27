@@ -1,0 +1,6 @@
+#% TaskWarrior convenience functions
+
+# Launch taskwarrior with project based on current directory name
+function tp {
+    task project:"$(basename `pwd`)" $*
+}
