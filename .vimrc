@@ -93,15 +93,19 @@ let g:gitgutter_sign_column_always = 1
 
 Plug 'tpope/vim-unimpaired'
 Plug 'gregsexton/MatchTag'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mitsuhiko/vim-jinja'
 Plug 'pearofducks/ansible-vim'
-
-Plug 'editorconfig/editorconfig-vim'
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+Plug 'scrooloose/nerdcommenter'
+Plug 'fatih/vim-go'
+" Plug 'editorconfig/editorconfig-vim'
+" let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:ConqueGdb_GdbExe = '/usr/local/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gdb'
 "Plug 'vim-scripts/Conque-GDB'
+Plug 'posva/vim-vue'
+
+let g:NERDDefaultAlign = 'left'
 
 call plug#end()
 
