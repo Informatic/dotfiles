@@ -53,14 +53,14 @@ let g:UltiSnipsJumpBackwardTrigger="<s-c-j>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Plug 'neomake/neomake'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 let g:ale_sign_column_always = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
-let g:ale_linters = {
-\   'python': ['pylint'],
-\}
+"let g:ale_linters = {
+"\   'python': ['pylint'],
+"\}
 let g:ale_open_list = 1
 let g:ale_lint_delay = 1000
 
@@ -96,9 +96,31 @@ Plug 'gregsexton/MatchTag'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mitsuhiko/vim-jinja'
+Plug 'dougireton/vim-chef'
 Plug 'pearofducks/ansible-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'fatih/vim-go'
+Plug 'LnL7/vim-nix'
+"Plug 'python-rope/ropevim'
+Plug 'python-mode/python-mode', { 'for': ['python'], 'branch': 'develop' }
+let g:pymode_folding = 0
+let g:pymode_python = "python"
+let g:pymode_rope = 1
+let g:pymode_lint_async = 1
+
+let g:pymode_run_bind = '<leader>r'
+let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_rope_show_doc_bind = '<leader>pd'
+let g:pymode_rope_goto_definition_bind = '<leader>pg'
+let g:pymode_rope_goto_definition_cmd = 'new'
+let g:pymode_rope_rename_bind = '<leader>pr'
+let g:pymode_rope_module_to_package_bind = '<leader>p1p'
+let g:pymode_rope_extract_method_bind = '<leader>pm'
+let g:pymode_rope_extract_variable_bind = '<leader>pl'
+let g:pymode_rope_use_function_bind = '<leader>pu'
+let g:pymode_rope_move_bind = '<leader>pv'
+let g:pymode_rope_change_signature_bind = '<leader>ps'
+
 " Plug 'editorconfig/editorconfig-vim'
 " let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:ConqueGdb_GdbExe = '/usr/local/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gdb'
@@ -113,12 +135,23 @@ call plug#end()
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-" let g:detectindent_preferred_indent = 4
-
+"set smarttab
 set expandtab
-" let g:detectindent_preferred_expandtab = 1
 
 filetype plugin indent on
+
+" Per-language/project indentation
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby.chef setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+augroup vagrant
+	au!
+	au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+"augroup ProjectSetup
+"au BufRead,BufEnter /home/informatic/nrf/projects/* set noexpandtab tabstop=4 shiftwidth=4
+"augroup END
 
 
 """ Keyboard
