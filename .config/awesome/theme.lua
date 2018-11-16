@@ -25,10 +25,10 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(0)
-theme.border_normal = "#444444bb"
-theme.border_focus  = "#535d6cbb"
-theme.border_marked = "#91231cbb"
+theme.border_width  = dpi(4)
+theme.border_focus = "#5294e2dd"
+theme.border_normal  = "#5294e233"
+theme.border_marked = "#91231cdd"
 
 -- There are other variable sets
 -- overriding the default one when

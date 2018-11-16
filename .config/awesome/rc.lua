@@ -607,14 +607,29 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+screen.connect_signal("arrange", function (s)
+    local max = s.selected_tag.layout.name == "max"
+    local only_one = #s.tiled_clients == 1 -- use tiled_clients so that other floating windows don't affect the count
+    -- but iterate over clients instead of tiled_clients as tiled_clients doesn't include maximized windows
+    for _, c in pairs(s.clients) do
+        if (max or only_one) and not c.floating or c.maximized then
+            c.border_width = 0
+        else
+            c.border_width = beautiful.border_width
+        end
+    end
+end)
 -- }}}
 
 -- {{{ Startup
-awful.util.spawn("xss-lock slock")
-awful.util.spawn("nm-applet")
-awful.util.spawn("blueman-applet")
-awful.util.spawn("compton --backend glx")
-awful.util.spawn("volumeicon")
-awful.util.spawn("unclutter -idle 5")
+awful.spawn("xss-lock slock")
+awful.spawn("nm-applet")
+awful.spawn("blueman-applet")
+awful.spawn("compton --backend glx")
+awful.spawn.with_shell("pkill pasystray; pasystray -a")
+awful.spawn("unclutter -idle 5")
+awful.spawn("xset r rate 250")
+awful.spawn("setxkbmap -option caps:super")
 -- awful.util.spawn("xinput set-prop 12 265 0.75")
 -- }}}
