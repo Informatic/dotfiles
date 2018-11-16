@@ -46,11 +46,13 @@ set wildignore+=*/node_modules/*
 
 Plug 'vim-scripts/wombat256.vim'
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-j>"
-let g:UltiSnipsEditSplit="vertical"
+if has('python') || has('python3')
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-c-j>"
+    let g:UltiSnipsEditSplit="vertical"
+endif
 
 " Plug 'neomake/neomake'
 "Plug 'w0rp/ale'
