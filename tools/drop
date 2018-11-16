@@ -3,8 +3,8 @@
 
 import sys, os, subprocess, hashlib, urllib
 
-destination = 'dropbox.inf.re:~/www/dropbox.inf.re/htdocs/b/%s'
-webpath     = 'http://d.inf.re/b/%s'
+destination = 'inf.re:~/www/dropbox.inf.re/b/%s'
+webpath     = 'https://d.inf.re/b/%s'
 FIX_PERMISSIONS = True
 
 def usage():
