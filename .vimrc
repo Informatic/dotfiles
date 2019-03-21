@@ -34,7 +34,7 @@ Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTree' }
 let NERDTreeIgnore=['\.py[co]$', '\.o$', '\.obj$', '\.elf$', '\.hex$']
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*.pyo
@@ -55,7 +55,7 @@ if has('python') || has('python3')
 endif
 
 " Plug 'neomake/neomake'
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 let g:ale_sign_column_always = 1
 let g:ale_set_loclist = 0
@@ -63,7 +63,7 @@ let g:ale_set_quickfix = 1
 "let g:ale_linters = {
 "\   'python': ['pylint'],
 "\}
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_lint_delay = 1000
 
 au FileType qf call AdjustWindowHeight(3, 10)
@@ -82,8 +82,6 @@ let g:gitgutter_sign_column_always = 1
 " Plug 'ciaranm/detectindent'
 " Plug 'scrooloose/syntastic'
 
-" nmap <F7> :SyntasticCheck<CR>
-
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
@@ -92,6 +90,17 @@ let g:gitgutter_sign_column_always = 1
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
+
+
+"Plug 'scrooloose/syntastic'
+"nmap <F7> :SyntasticCheck<CR>
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+" let g:syntastic_enable_signs = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 Plug 'tpope/vim-unimpaired'
 Plug 'gregsexton/MatchTag'
@@ -102,6 +111,7 @@ Plug 'dougireton/vim-chef'
 Plug 'pearofducks/ansible-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'fatih/vim-go'
+let g:go_version_warning = 0
 Plug 'LnL7/vim-nix'
 "Plug 'python-rope/ropevim'
 Plug 'python-mode/python-mode', { 'for': ['python'], 'branch': 'develop' }
@@ -146,6 +156,9 @@ filetype plugin indent on
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby.chef setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType vue setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 augroup vagrant
 	au!
@@ -229,3 +242,4 @@ if ! exists("*RunWith")
 endif
 
 set clipboard=unnamedplus
+set guicursor=
