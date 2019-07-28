@@ -15,7 +15,7 @@ require("awful.hotkeys_popup.keys")
 
 local cyclefocus = require("cyclefocus")
 cyclefocus.raise_clients = false
-cyclefocus.naughty_preset.position = 'bottom_right'
+cyclefocus.default_preset.position = 'bottom_right'
 cyclefocus.cycle_filters = {}
 
 local battery_widget = require("battery-widget")
@@ -53,6 +53,7 @@ beautiful.notification_icon_size = 32
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
+-- terminal = "kitty"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -177,7 +178,7 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
-ac_prefix="	🔌"
+ac_prefix="🔌"
 battery_prefix="⚡"
 
 battery1 = battery_widget({adapter = "BAT0", timeout=10, listen=true, ac_prefix=ac_prefix, battery_prefix=battery_prefix})
@@ -188,7 +189,30 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    local tags = awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    for _, tag in pairs(tags) do
+        tag:connect_signal("request::screen", function(t)
+            local fallback_tag = nil
+
+            -- find tag with same name on any other screen
+            for other_screen in screen do
+                if other_screen ~= t.screen then
+                    fallback_tag = awful.tag.find_by_name(other_screen, t.name)
+                    if fallback_tag ~= nil then
+                        break
+                    end
+                end
+            end
+
+            -- no tag with same name exists, chose random one
+            if fallback_tag == nil then
+                fallback_tag = awful.tag.find_fallback()
+            end
+
+            -- delete the tag and move it to other screen
+            t:delete(fallback_tag, true)
+        end)
+    end
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -224,8 +248,21 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             -- mykeyboardlayout,
             wibox.widget.systray(),
-            battery1.widget,
-            battery2.widget,
+            {
+                battery2.progressbar_widget,
+                {
+                    {
+                        battery1.text_widget,
+                        battery2.text_widget,
+                        layout = wibox.layout.align.horizontal,
+                    },
+                    left = 5,
+                    right = 5,
+                    layout = wibox.container.margin,
+                },
+                battery1.progressbar_widget,
+                layout = wibox.layout.align.vertical,
+            },
             mytextclock,
             s.mylayoutbox,
         },
@@ -351,8 +388,18 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%") end,
               {description = "lower volume", group = "custom"}),
 
+    awful.key({}, "XF86Display", function() awful.util.spawn("xrdr") end,
+              {description = "reconfigure displays", group = "custom"}),
+
     awful.key({}, "XF86MonBrightnessUp", function() awful.util.spawn("xbacklight +5") end),
     awful.key({}, "XF86MonBrightnessDown", function() awful.util.spawn("xbacklight -5") end),
+
+    awful.key({ modkey }, "F6", function() awful.util.spawn("ddccli.py --brightness +5") end),
+    awful.key({ modkey }, "F5", function() awful.util.spawn("ddccli.py --brightness -5") end),
+
+    awful.key({ "Shift" }, "F6", function() awful.util.spawn("ddccli.py --contrast +5") end),
+    awful.key({ "Shift" }, "F5", function() awful.util.spawn("ddccli.py --contrast -5") end),
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -524,8 +571,8 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
-    { rule = { role = "browser" },
-      properties = { tag = "2" } },
+    --{ rule = { role = "browser" },
+    --  properties = { tag = "2" } },
     { rule = { class = "Mail" },
       properties = { tag = "3" } },
     { rule = { class = "volumeicon"},

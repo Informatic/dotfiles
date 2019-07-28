@@ -102,6 +102,8 @@ let g:gitgutter_sign_column_always = 1
 "let g:syntastic_javascript_checkers = ['eslint']
 "let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
 Plug 'tpope/vim-unimpaired'
 Plug 'gregsexton/MatchTag'
 " Plug 'Valloric/YouCompleteMe'

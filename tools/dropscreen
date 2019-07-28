@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 #% Merge multiple images vertically and downsize to reasonable resolution.
 #% Useful for publishing multiple movie screenshots.
 
