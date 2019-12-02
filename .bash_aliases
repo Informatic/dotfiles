@@ -14,11 +14,15 @@ alias :q=exit
 
 alias speedtest="curl http://ftp.atman.pl/test64mb -O /dev/null"
 alias dwojka="mplayer -cache 256 http://stream.polskieradio.pl/program2"
+alias gist="gist -p"
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+alias k="kubectl config use-context"
+alias n="kubectl config set-context --current --namespace"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
