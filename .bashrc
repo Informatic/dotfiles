@@ -5,6 +5,7 @@ DOTFILES_DIR="`dirname $(readlink $BASH_SOURCE)`"
 
 export PATH="$DOTFILES_DIR/tools:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -17,8 +18,10 @@ HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
+PROMPT_COMMAND='$PROMPT_COMMAND; history -a'
+export HISTTIMEFORMAT="%h %d %H:%M:%S "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

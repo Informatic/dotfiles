@@ -567,12 +567,9 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
-
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
-    --{ rule = { role = "browser" },
-    --  properties = { tag = "2" } },
     { rule = { class = "Mail" },
       properties = { tag = "3" } },
     { rule = { class = "volumeicon"},
@@ -673,7 +670,7 @@ end)
 awful.spawn("xss-lock slock")
 awful.spawn("nm-applet")
 awful.spawn("blueman-applet")
-awful.spawn("compton --backend glx")
+-- awful.spawn("compton --backend glx")
 awful.spawn.with_shell("pkill pasystray; pasystray -a")
 awful.spawn("unclutter -idle 5")
 awful.spawn("xset r rate 250")
