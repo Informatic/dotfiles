@@ -2,6 +2,9 @@
 set nocompatible
 filetype off
 
+" Map <Leader> to ,
+let mapleader = ","
+
 call plug#begin('~/.vim/bundle')
 
 """ Fix Konsole font changes...
@@ -58,7 +61,7 @@ let g:ale_open_list = 0
 let g:ale_lint_delay = 1000
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-python']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-python', 'coc-html', 'coc-tsserver', 'coc-vetur']
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -322,9 +325,6 @@ augroup END
 """ Keyboard
 " F2 will toggle the "paste mode" (disabled indentation)
 set pastetoggle=<F2>
-
-" Map <Leader> to ,
-let mapleader = ","
 
 " Better indentation (keep selection, single < > keystroke indents one level)
 vnoremap < <gv  " better indentation
