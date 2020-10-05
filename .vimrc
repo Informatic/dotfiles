@@ -49,6 +49,7 @@ Plug 'w0rp/ale'
 let g:ale_fixers = {
  \ 'python': ['black'],
  \ 'javascript': ['eslint'],
+ \ 'typescript': ['eslint'],
  \ 'go': ['gofmt'],
  \ 'yaml': ['yamllint']
  \ }
@@ -62,6 +63,7 @@ let g:ale_lint_delay = 1000
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-python', 'coc-html', 'coc-tsserver', 'coc-vetur']
+let g:coc_disable_startup_warning = 1
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -234,13 +236,17 @@ let g:gitgutter_sign_column_always = 1
 """ Language support
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
+Plug 'jceb/vim-orgmode'
 Plug 'LnL7/vim-nix'
 Plug 'elixir-lang/vim-elixir'
 Plug 'mitsuhiko/vim-jinja'
 Plug 'posva/vim-vue'
+Plug 'digitaltoad/vim-pug'
 Plug 'dougireton/vim-chef'
 Plug 'peterhoeg/vim-qml'
 Plug 'pearofducks/ansible-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'google/vim-jsonnet'
 Plug 'fatih/vim-go'
 let g:go_version_warning = 0
 
@@ -312,6 +318,8 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType vue setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType java setlocal ts=2 sts=2 sw=2 expandtab
 
 augroup vagrant
 	au!

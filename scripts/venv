@@ -25,7 +25,7 @@ venv() {
             read res
             [[ "$res" == "n" ]] && return 0
             mkdir -p $VENV_HOME
-            virtualenv $VENV_HOME/$venv_name $*
+            python3 -m venv $VENV_HOME/$venv_name $*
             _venv_activate $venv_name
         fi
     fi

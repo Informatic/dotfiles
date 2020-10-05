@@ -1,4 +1,9 @@
 {
     "diagnostic.displayByAle": true,
-    "coc.preferences.extensionUpdateCheck": "never"
+    "coc.preferences.extensionUpdateCheck": "never",
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyPath": "/run/current-system/sw/bin/mypy",
+    "python.linting.pylintEnabled": false,
+    "python.jediEnabled": true
 }
