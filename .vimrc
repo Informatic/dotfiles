@@ -45,14 +45,14 @@ set wildignore+=*.hex
 set wildignore+=*/_build/*
 set wildignore+=*/node_modules/*
 
-" Plug 'w0rp/ale'
-let g:ale_fixers = {
- \ 'python': ['black'],
- \ 'javascript': ['eslint'],
- \ 'typescript': ['eslint'],
- \ 'go': ['gofmt'],
- \ 'yaml': ['yamllint']
- \ }
+"Plug 'w0rp/ale'
+"let g:ale_fixers = {
+" \ 'python': ['black'],
+" \ 'javascript': ['eslint'],
+" \ 'typescript': ['eslint'],
+" \ 'go': ['gofmt'],
+" \ 'yaml': ['yamllint']
+" \ }
 
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
@@ -62,7 +62,7 @@ let g:ale_open_list = 0
 let g:ale_lint_delay = 1000
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-vetur', 'coc-eslint', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-pyright', 'coc-html', 'coc-tsserver', 'coc-vetur', 'coc-eslint', 'coc-prettier']
 let g:coc_disable_startup_warning = 1
 
 " TextEdit might fail if hidden is not set.
@@ -237,7 +237,6 @@ let g:gitgutter_sign_column_always = 1
 
 """ Language support
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
 Plug 'jceb/vim-orgmode'
 Plug 'LnL7/vim-nix'
 Plug 'elixir-lang/vim-elixir'

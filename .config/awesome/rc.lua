@@ -380,6 +380,8 @@ globalkeys = gears.table.join(
               {description = "lock screen", group = "custom"}),
     awful.key({}, "XF86AudioMicMute", function() awful.util.spawn("pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle") end,
               {description = "mute microphone", group = "custom"}),
+    awful.key({}, "XF86Tools", function() awful.util.spawn("pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle") end,
+              {description = "mute microphone", group = "custom"}),
     awful.key({}, "XF86AudioMute", function() awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end,
               {description = "mute audio", group = "custom"}),
 
@@ -675,5 +677,7 @@ awful.spawn.with_shell("pkill pasystray; pasystray -a")
 awful.spawn("unclutter -idle 5")
 awful.spawn("xset r rate 250")
 awful.spawn("setxkbmap -option caps:super")
+awful.spawn("barrier")
+awful.spawn("vorta")
 -- awful.util.spawn("xinput set-prop 12 265 0.75")
 -- }}}

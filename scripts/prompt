@@ -3,7 +3,7 @@
 declare -A hostname_colors
 
 function __taskwarrior_prompt {
-    [[ -d "$HOME/.taskwarrior" ]] && (
+    [[ -d "$HOME/.timewarrior" ]] && (
     local tracking="$(timew get dom.active 2>/dev/null)"
     if [[ "$tracking" -eq 1 ]]; then
         local tasktime="$(timew get dom.active.duration | egrep -o '[0-9]+[A-Z]' | head -n 1 | tr 'A-Z' 'a-z')"

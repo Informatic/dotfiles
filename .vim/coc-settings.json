@@ -12,6 +12,14 @@
     "diagnostic.virtualText": true,
     "diagnostic.checkCurrentLine": true,
     "python.jediEnabled": true,
-    "python.jediPath": "/run/current-system/sw/lib/python3.7/site-packages/",
-    "typescript.format.enabled": false
+    "python.jediPath": "/run/current-system/sw/lib/python3.8/site-packages/",
+    "typescript.format.enabled": false,
+    "languageserver": {
+        "nix": {
+            "command": "rnix-lsp",
+            "filetypes": [
+                "nix"
+            ]
+        }
+    }
 }
