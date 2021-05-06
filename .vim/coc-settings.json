@@ -4,6 +4,14 @@
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": true,
     "python.linting.mypyPath": "/run/current-system/sw/bin/mypy",
+    "python.formatting.blackPath": "/run/current-system/sw/bin/black",
     "python.linting.pylintEnabled": false,
-    "python.jediEnabled": true
+    "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "typescript"],
+    "eslint.autoFixOnSave": true,
+    "javascript.format.enabled": false,
+    "diagnostic.virtualText": true,
+    "diagnostic.checkCurrentLine": true,
+    "python.jediEnabled": true,
+    "python.jediPath": "/run/current-system/sw/lib/python3.7/site-packages/",
+    "typescript.format.enabled": false
 }

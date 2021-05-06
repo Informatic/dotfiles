@@ -45,7 +45,7 @@ set wildignore+=*.hex
 set wildignore+=*/_build/*
 set wildignore+=*/node_modules/*
 
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 let g:ale_fixers = {
  \ 'python': ['black'],
  \ 'javascript': ['eslint'],
@@ -62,7 +62,7 @@ let g:ale_open_list = 0
 let g:ale_lint_delay = 1000
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-python', 'coc-html', 'coc-tsserver', 'coc-vetur']
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-html', 'coc-vetur', 'coc-eslint', 'coc-tsserver']
 let g:coc_disable_startup_warning = 1
 
 " TextEdit might fail if hidden is not set.
@@ -90,6 +90,8 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
