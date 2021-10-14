@@ -4,7 +4,6 @@
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": true,
     "python.linting.mypyPath": "/run/current-system/sw/bin/mypy",
-    "python.formatting.blackPath": "/run/current-system/sw/bin/black",
     "python.linting.pylintEnabled": false,
     "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "typescript"],
     "eslint.autoFixOnSave": true,
@@ -21,5 +20,8 @@
                 "nix"
             ]
         }
-    }
+    },
+    "prettier.requireConfig": true,
+    "python.formatting.provider": "black",
+    "coc.preferences.willSaveHandlerTimeout": 1000
 }

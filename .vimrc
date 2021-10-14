@@ -248,7 +248,7 @@ Plug 'peterhoeg/vim-qml'
 Plug 'pearofducks/ansible-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'google/vim-jsonnet'
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 let g:go_version_warning = 0
 
 "Plug 'python-mode/python-mode', { 'for': ['python'], 'branch': 'develop' }

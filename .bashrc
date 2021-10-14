@@ -53,6 +53,7 @@ fi
 [ -f ~/.bashrc.local ] && source ~/.bashrc.local
 
 # Load relevant parts
+source $DOTFILES_DIR/scripts/git-prompt.sh
 source $DOTFILES_DIR/scripts/prompt
 source $DOTFILES_DIR/scripts/scratch
 source $DOTFILES_DIR/scripts/venv
